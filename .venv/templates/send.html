@@ -122,6 +122,7 @@
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>
+    <form action="/send", method="post">
     <div class="mail-app">
         <div class="mail-container">
             <label for="mail-app-show">보낸메일함</label>
@@ -131,18 +132,27 @@
                     <input type="checkbox" id="selectAll" onclick="toggleSelectAll()"> <!-- Checkbox to select all -->
                 </div>
                 <div class="mail-sender">받을사람</div>
-                <div class="mail-subject">내용</div>
-                <div class="mail-date">날짜</div>
-                <h1>{{user_id}}</h1>
-                <h1>{{user_pw}}</h1>
+                <div class="mail-subject">제목</div>
+                <div class="mail-date">내용</div>
             </div>
             <ul class="mail-list">
+                <!-- {% for row in smtpdata %} -->
                 <li>
                     <div class="mail-item" id="mail-item1">
                         <input type="checkbox" id="mail1" onclick="toggleDeleteButton()">
-                        <div class="mail-senderex"><a href="#">{{from_address}}</a></div>
-                        <div class="mail-subjectex"><a href="#">{{subject}}</a></div>
-                        <div class="mail-dateex">{{date}}</div>
+                        <div class="mail-senderex"><a href="#">{{row[3]}}</a></div>
+                        <div class="mail-subjectex"><a href="#">{{row[2]}}</a></div>
+                        <div class="mail-dateex">{{row[4]}}</div>
+                    </div>
+                </li>
+                <!-- {% endfor %} -->
+                <!-- 
+                <li>
+                    <div class="mail-item" id="mail-item1">
+                        <input type="checkbox" id="mail1" onclick="toggleDeleteButton()">
+                        <div class="mail-senderex"><a href="#"></a></div>
+                        <div class="mail-subjectex"><a href="#"></a></div>
+                        <div class="mail-dateex"></div>
                     </div>
                 </li>
                 <li>
@@ -241,17 +251,11 @@
                         <div class="mail-dateex">2023-01-01</div>
                     </div>
                 </li>
-                <li>
-                    <div class="mail-item" id="mail-item1">
-                        <input type="checkbox" id="mail1" onclick="toggleDeleteButton()">
-                        <div class="mail-senderex"><a href="#">John Doe</a></div>
-                        <div class="mail-subjectex"><a href="#">Subject of the email</a></div>
-                        <div class="mail-dateex">2023-01-01</div>
-                    </div>
-                </li>
+                 -->
             </ul>
         </div>
     </div>
+    </form>
     <div class="mail-content">
         <div class="mail-container">
             <label for="mail-app-show">보낸메일함</label>

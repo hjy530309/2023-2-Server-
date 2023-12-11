@@ -122,14 +122,8 @@ def signK():
         return render_template('login.html')
     return render_template('signK.html')
 
-def getSmtpServer(option):
-    if option == 'google':
-        return 'smtp.gmail.com'
-    elif option == 'naver':
-        return 'smtp.naver.com'
-    elif option == 'kakao':
-        return 'smtp.kakao.com'
 
+    
 @app.route('/write11', methods=['POST'])
 def write11():
     if request.method == 'POST':
@@ -148,7 +142,7 @@ def write11():
         #smtp = smtplib.SMTP_SSL()
         #smtp.connect(SMTP_SERVER, SMTP_PORT)
         smtp = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT)
-        EMAIL_ADDR = 'asdf1472486@gmail.com'       # 연동 Email
+        EMAIL_ADDR = 'asdf1472486@gmail.com'          # 연동 Email
         EMAIL_PASSWORD = 'xxmi rifl vtut qyez'      # 비번
 
         # SMTP 서버에 로그인
@@ -168,19 +162,27 @@ def write11():
         smtp.quit()
         
         cur = mysql.connection.cursor()
-        '''
-        addQ="INSERT INTO smtp (smtp_user, smtp_subject, smtp_recipient, smtp_message, email_id) VALUES (%s, %s, %s, %s, %s)"
+        
+        
         email_id=("select e.email_id from usersemail e join users u on u.user_name=%s", user_name)
-        cur.execute(addQ, (EMAIL_ADDR, subject, recipient, message, email_id))
+        cur.execute("INSERT INTO smtp (smtp_user, smtp_subject, smtp_recipient, smtp_message) VALUES (%s, %s, %s, %s)", (EMAIL_ADDR, subject, recipient, message))
         mysql.connection.commit()
-        #cur.execute("SELECT s.email_id FROM users u join usersEmail e on u.user_id=e.user_id join smtp s on e.email_id=s.email_id WHERE u.user_name = %s", (user_name))
-        #cur.execute("update smtp set email_id = %s")
+        cur.execute('select * from smtp')
+        smtpdata=cur.fetchall()
         cur.close()
-'''
 
-        return render_template('send.html')
+
+        return render_template('send.html', smtpdata=smtpdata)
     return render_template('write.html')
 
+def getSmtpServer(option):
+    if option == 'google':
+        return 'smtp.gmail.com'
+    elif option == 'naver':
+        return 'smtp.naver.com'
+    elif option == 'kakao':
+        return 'smtp.kakao.com'
+    
 @app.route('/receive11', methods=['POST'])
 def receive11():
 
@@ -259,3 +261,48 @@ def send():
 if __name__ == "__main__": 
         
     app.run(debug=True, host='0.0.0.0', port=5000)
+
+
+
+    
+def getSmtpEmail(option):
+    username = session['username']
+    if option=='google':
+        cur = mysql.connection.cursor()
+        cur.execute("selcet gmail_name from usersEmail where user_name=%s", (username))
+        emailAddr=cur.fetchone()
+        cur.close()
+        return emailAddr
+    elif option=='naver':
+        cur = mysql.connection.cursor()
+        cur.execute("selcet naver_name from usersEmail where user_name=%s", (username))
+        emailAddr=cur.fetchone()
+        cur.close()
+        return emailAddr
+    elif option=='naver':
+        cur = mysql.connection.cursor()
+        cur.execute("selcet kakao_name from usersEmail where user_name=%s", (username))
+        emailAddr=cur.fetchone()
+        cur.close()
+        return emailAddr
+    
+def getSmtpEmailPwd(option):
+    username = session['username']
+    if option=='google':
+        cur = mysql.connection.cursor()
+        cur.execute("selcet gmail_pw from usersEmail where user_name=%s", (username))
+        emailPwd=cur.fetchone()
+        cur.close()
+        return emailPwd
+    elif option=='naver':
+        cur = mysql.connection.cursor()
+        cur.execute("selcet naver_pw from usersEmail where user_name=%s", (username))
+        emailPwd=cur.fetchone()
+        cur.close()
+        return emailPwd
+    elif option=='naver':
+        cur = mysql.connection.cursor()
+        cur.execute("selcet kakao_pw from usersEmail where user_id=%s", (username))
+        emailPwd=cur.fetchone()
+        cur.close()
+        return emailPwd

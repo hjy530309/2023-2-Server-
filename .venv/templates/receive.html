@@ -122,10 +122,18 @@
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>
+    <form action="/receive" method="GET">
     <div class="mail-app">
         <div class="mail-container">
-            <label for="mail-app-show">보낸메일함</label>
-            <button class="delete-button" onclick="deleteSelected()">휴지통으로 이동</button>
+            <label for="mail-app-show">받은메일함</label>
+            <button class="delete-button" onclick="deleteSelected()">삭제</button>
+            <select id="site" name="option">
+                <option value="naver">네이버</option>
+                <option value="google">구글</option>
+                <option value="kakao">카카오</option>
+            </select>
+
+            <p id="selectedsite">선택한 사이트: </p>
             <div class="mail-list-header">
                 <div class="mail-checkbox">
                     <input type="checkbox" id="selectAll" onclick="toggleSelectAll()"> <!-- Checkbox to select all -->
@@ -138,11 +146,12 @@
                 <li>
                     <div class="mail-item" id="mail-item1">
                         <input type="checkbox" id="mail1" onclick="toggleDeleteButton()">
-                        <div class="mail-senderex"><a href="#">John Doe</a></div>
-                        <div class="mail-subjectex"><a href="#">Subject of the email</a></div>
-                        <div class="mail-dateex">2023-01-01</div>
+                        <div class="mail-senderex"><a href="#"></a></div>
+                        <div class="mail-subjectex"><a href="#"></a></div>
+                        <div class="mail-dateex"></div>
                     </div>
                 </li>
+                
                 <li>
                     <div class="mail-item" id="mail-item1">
                         <input type="checkbox" id="mail1" onclick="toggleDeleteButton()">
@@ -250,6 +259,7 @@
             </ul>
         </div>
     </div>
+    </form>
     <div class="mail-content">
         <div class="mail-container">
             <label for="mail-app-show">보낸메일함</label>
