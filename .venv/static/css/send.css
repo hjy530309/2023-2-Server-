@@ -1,0 +1,261 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#left-panel {
+  background-color: lightblue;
+  color: rgb(255, 255, 255);
+  width: 200px;
+  height: calc(100vh - 78px); /* 60px is the height of the header */
+  position: fixed;
+  top: 74px; /* Adjusted top position to start below the header */
+  left: 0;
+  overflow-y: auto;
+}
+
+#left-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-menu button{
+  background-color: #fff;
+  color:#1d809c;
+  margin-right: 1%;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 40px;
+}
+.search-form input{
+  margin-right: 2%;
+  border-radius: 40px;
+}
+#left-panel .mail-setting {
+  padding: 5%;
+  width: 100%;
+}
+#left-panel li {
+  display:flow-root;
+  padding: 7%;
+}
+
+#left-panel i {
+  margin-right: 15%;
+}
+
+#left-panel a {
+  color: #fff;
+}
+
+#left-panel li button {
+  background-color: lightblue;
+  color: white;
+  padding: 5%;
+  border: none;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  cursor: pointer;
+  width: 120%;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 40px;
+}
+#left-panel li #button {
+  background-color: lightblue;
+  color: white;
+  padding: 5%;
+  border: none;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  cursor: pointer;
+  width: 120%;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 40px;
+}
+#left-panel li button:hover {
+  background-color: #127886;
+}
+
+#header {
+  background-color: lightblue;
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display:flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  height: 78px;
+  align-items: center;
+}
+#header a{
+  vertical-align: middle;
+  color:#fff
+}
+#header i{
+  vertical-align: middle;
+}
+#header img {
+  display:flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.right-panel {
+  margin-left: 200px;
+}
+
+.mail-app {
+  position: fixed;
+  height: calc(100vh - 74px);
+  top: 74px;
+  left: 200px;
+  width: 88%;
+  overflow-y: auto;
+}
+label[for="mail-app-show"]{
+background-color: #fff;
+color:lightblue;
+border: 2px solid lightblue;
+font-size: larger;
+font-weight: bold;
+padding: 1%;
+border-radius: 40px;
+}
+.mail-app .mail-container {
+  padding: 20px;
+}
+.mail-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+
+.mail-list li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+}
+.mail-container input{
+  margin-right: 50%;
+}
+.mail-list {
+  list-style: none;
+  padding: 0;
+}
+
+.mail-item a {
+  text-decoration: none;
+  color: lightblue;
+}
+.delete-button,
+.return-button {
+display: none;
+background-color: lightblue;
+color: white;
+padding: 1%;
+border: none;
+border-radius: 40px;
+margin-right: 1%;
+}
+.delete-button:hover,
+.return-button:hover{
+  background-color: #127886;
+}
+.mail-sender,
+.mail-date,
+.mail-select,
+.mail-senderex,
+.mail-dateex,
+.mail-selectex{
+  flex: 2;
+  background-color: #fff;
+  color: lightblue;
+  height: 24px;
+}
+.mail-checkbox{
+  margin-right: 1%;
+}
+.mail-subject,
+.mail-subjectex{
+  flex: 4;
+  background-color: #fff;
+  color: lightblue;
+  height: 24px;
+  cursor: pointer;
+}
+.mail-item {
+  display: flex;
+  align-items: center;
+}
+
+.mail-item input {
+  margin-right: 10px;
+}
+.menu-item-has-children-dropdown a{
+  font-weight: bold;
+}
+.mail-content {
+position: fixed;
+height: calc(100vh - 74px);
+top: 74px;
+left: 200px;
+width: 88%;
+overflow-y: auto;
+display: none;
+padding: 20px;
+}
+.button-collect{
+border-radius: 40px;
+display: flex;
+flex-direction: row;
+margin-bottom: 10px;
+}
+.titleex,
+.senderex,
+.dateex{
+text-decoration: none;
+color: lightblue;
+margin-left: 1%;
+}
+.sender,
+.date,
+.receive{
+display: flex;
+flex-direction: row;
+color: lightblue;
+margin-bottom: 10px;
+}
+.title{
+display: flex;
+flex-direction: row;
+color: lightblue;
+font-size:24px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+.content-body{
+display: flex;
+}
+.content-body input{
+border: none;
+border-radius: 20px;
+color: #fff;
+background-color: lightblue;
+width: 90%;
+height: 40vh;
+}
+input::placeholder{
+color: #fff;
+}
+#menuToggle:hover{
+color: #127886;
+}
