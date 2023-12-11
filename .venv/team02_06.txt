@@ -1,0 +1,41 @@
+create database team02_06;
+use team02_06;
+
+create table users(
+user_id int AUTO_INCREMENT PRIMARY KEY,
+user_name varchar(30) not null,
+user_pw varchar(30) not null
+);
+
+create table usersEmail(
+Email_id int AUTO_INCREMENT PRIMARY KEY,
+user_id int,
+google_name varchar(30),
+google_pw varchar(30),
+naver_name varchar(30),
+naver_pw varchar(30),
+kakao_name varchar(30),
+kakao_pw varchar(30),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+create table smtp(
+smtp_id int AUTO_INCREMENT PRIMARY KEY,
+smtp_user varchar(30),
+smtp_subject varchar(50),
+smtp_recipient varchar(30),
+smtp_message text,
+Email_id INT,
+FOREIGN KEY (Email_id) REFERENCES usersEmail(Email_id)
+);
+
+create table pop(
+POP_id int AUTO_INCREMENT PRIMARY KEY,
+pop_user varchar(30),
+POP_subject varchar(50),
+POP_from varchar(30),
+POP_date varchar(30),
+POP_message text,
+Email_id INT,
+FOREIGN KEY (Email_id) REFERENCES usersEmail(Email_id)
+);
